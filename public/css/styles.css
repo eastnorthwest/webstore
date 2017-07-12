@@ -1,3 +1,28 @@
 html, body, h1, h2, h3, h4, h5 {
-    font-family: 'Spectral', serif;
 }
+
+.center {
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+/* override */
+#sidenav-overlay {
+    z-index: auto;
+}
+

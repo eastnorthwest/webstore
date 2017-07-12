@@ -5,9 +5,12 @@ const app = express();
 
 app.use(flash());
 
+// create login and register pages
+// create flash messages
+
 const authentication = require('../config/authentication');
 
-routes.use('/doLogin', (req, res) => {
+routes.post('/login', (req, res) => {
   console.log("auth.doLogin")
   authentication.checkLogin(req.params)
     .then((result) => {
@@ -15,10 +18,11 @@ routes.use('/doLogin', (req, res) => {
   }).catch((err) => {
     req.flash('error', 'Login invalid.');
   });
-  res.render('auth/login');
+  next();
 });
 
 routes.get('/login', (req, res) => {
+
   console.log("auth.login")
   if (req.sessionID) {
     req.session.destroy();
@@ -26,7 +30,7 @@ routes.get('/login', (req, res) => {
   res.render('auth/login');
 });
 
-routes.use('/doRegister', (req, res) => {
+routes.post('/register', (req, res) => {
   console.log("auth.doRegister")
   authentication.checkRegister(req.params)
   .then((result) => {
@@ -51,14 +55,8 @@ routes.get('/logout', (req, res) => {
   if (req.sessionID) {
     req.session.destroy();
   }
-  res.redirect('/');
+  res.redirect('/auth/login');
 });
-
-
-
-
-
-
 
 
 module.exports = routes;

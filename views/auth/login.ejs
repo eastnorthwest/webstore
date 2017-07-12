@@ -1,0 +1,39 @@
+<%- include ../shared/header%>
+
+<% if (locals.error) { %>
+<h4 class="red-rext center">
+    <%= locals.error %>
+</h4>
+<% } %>
+
+<div class="valign-wrapper full-height">
+    <div class="row full-width">
+        <div class="col s4 offset-s4 z-depth-2 no-padding ">
+            <div class="row grey lighten-2 no-padding">
+                <div class="col">
+                    <h3>Login</h3>
+                </div>
+            </div>
+            <form action="/auth/login" method="POST">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="input-field">
+                            <input type="email" name="email" id="email" required/>
+                            <label for="email">Email:</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" name="password" id="password"/>
+                            <label for="password">Password:</label>
+                        </div>
+                        <input type="submit" class="button btn" value="Login">
+                    </div>
+                </div>
+                <div class="col s12 center-align">
+                    <p class="center grey-text">New to Webstore? <a href="/auth/register">Click here to register</a></p>
+                    <p></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include ../shared/footer%>

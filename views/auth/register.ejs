@@ -1,0 +1,40 @@
+<%- include ../shared/header%>
+
+<% if (locals.error) { %>
+<h4 class="red-rext center">
+    <%= locals.error %>
+</h4>
+<% } %>
+
+<div class="valign-wrapper full-height">
+    <div class="row full-width">
+        <div class="col s4 offset-s4 z-depth-2 no-padding ">
+            <div class="row grey lighten-2 no-padding">
+                <div class="col">
+                    <h3>Register</h3>
+                </div>
+            </div>
+            <form action="/auth/register" method="POST">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="input-field">
+                            <input type="email" name="email" id="email" required/>
+                            <label for="email">Email:</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" name="password" id="password"/>
+                            <label for="password">Password:</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" name="password2" id="password2"/>
+                            <label for="password2">Confirm password:</label>
+                        </div>
+                        <input type="submit" class="button btn" value="Register">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ../shared/footer%>

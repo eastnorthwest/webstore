@@ -12,6 +12,10 @@ const authRoutes = require('./routes/auth.js');
 const cartRoutes = require('./routes/cart.js');
 const baseRoute = require('./routes/base.js');
 
+// set defaults/globals
+app.locals.isAdmin =  false;
+app.locals.isLoggedIn = false;
+
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
