@@ -1,24 +1,23 @@
 <%- include ../shared/header%>
 
-<% if (locals.error) { %>
-<h4 class="red-rext center">
-    <%= locals.error %>
-</h4>
-<% } %>
-
 <div class="valign-wrapper full-height">
     <div class="row full-width">
-        <div class="col s4 offset-s4 z-depth-2 no-padding ">
+        <div class="col s4 offset-s4 z-depth-2 no-padding input-box">
             <div class="row grey lighten-2 no-padding">
                 <div class="col">
                     <h3>Register</h3>
                 </div>
             </div>
-            <form action="/auth/register" method="POST">
+            <form action="/auth/register?p=1234" method="POST">
+                <% if (message.length && !message[0].success) { %>
+                <div class="red lighten-5 red-text center">
+                    <%= message[0].message %>
+                </div>
+                <% } %>
                 <div class="row">
                     <div class="col s12">
                         <div class="input-field">
-                            <input type="email" name="email" id="email" required/>
+                            <input type="email" name="email" id="email" value="<% if (form_params.length) { %><%=form_params[0].email%><% }%>" required/>
                             <label for="email">Email:</label>
                         </div>
                         <div class="input-field">
@@ -30,6 +29,11 @@
                             <label for="password2">Confirm password:</label>
                         </div>
                         <input type="submit" class="button btn" value="Register">
+                    </div>
+                    <div class="col s12 center-align">
+                        <br/>
+                        <p class="center grey-text">Existing customer? <a href="/auth/login">Click here to login</a></p>
+                        <p></p>
                     </div>
                 </div>
             </form>

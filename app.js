@@ -1,20 +1,12 @@
-const express = require('express');
-const app = express();
-const session = require('express-session');
-const ejs = require('ejs');
-const port = process.env.PORT || 3000;
 
-require('./config/ejs.js')(app, express);
+const app = require('./config/common');
 
+// setup subroutes
 const adminRoutes = require('./routes/admin.js');
 const userRoutes = require('./routes/user.js');
 const authRoutes = require('./routes/auth.js');
 const cartRoutes = require('./routes/cart.js');
 const baseRoute = require('./routes/base.js');
-
-// set defaults/globals
-app.locals.isAdmin =  false;
-app.locals.isLoggedIn = false;
 
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
@@ -22,6 +14,7 @@ app.use('/user', userRoutes);
 app.use('/cart', cartRoutes);
 app.use('/', baseRoute);
 
+const port = process.env.PORT || 3000;
 app.listen(port, (err) => {
   console.log('Running on port ' + port)
 });

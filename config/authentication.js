@@ -1,46 +1,23 @@
-const express = require('express');
-const app = express();
-const session = require('express-session');
-const flash = require('express-flash');
 const db = require('./db.js');
-const cookie = require("cookie-parser");
 
-app.use(flash());
-
-const checkSession = (route) => {
-
-  route.use(session({
-    secret: (process.env.SESSION_SECRET || 'secret'),
-    cookie: { maxAge: 1000 * 60 * 60 },
-    resave: false,
-    saveUninitialized: true
-  }));
-
-  route.use('/', (req, res, next) => {
-    if (req.sessionID) {
-      console.log(req.session)
-      console.log("checkSession", req.sessionID)
-      db.updateSession(req.sessionID).then((result) => {
-        console.log("authentication- updateSession ok - ", result)
-        next();
-      }).catch((err) => {
-        console.log("authentication- updateSession error - ", err)
-        next();
-      })
+const checkRegister = (params) => {
+  console.log('checkRegister', params)
+  var message = "Registration is successful.";
+  var pass = true;
+  try {
+    if (params.password != params.password2) {
+      message="Passwords do not match."; pass = false;
     }
-    next();
-  })
-
-  return route;
+    if (!params.password || params.password.length<3) {
+      message="Please enter a valid password."; pass = false;
+    }
+  } catch (e) {
+    message="Unable to register.  Please try again later."; pass = false;
+  }
+  return {
+    success: pass ? true : false,
+    message: message
+  }
 }
 
-const checkRegister = () => {
-  route.post('/auth/register', (req, res, next) => {
-
-
-    req.flash('error', 'Login invalid.');
-  })
-}
-
-
-module.exports = {checkSession};
+module.exports = {checkRegister};

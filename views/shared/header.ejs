@@ -1,8 +1,8 @@
 <html>
 <head>
-    <title>ToDo</title>
+    <title>Webstore</title>
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/bower_components/materialize/dist/css/materialize.min.css"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css"/>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/materialize/dist/js/materialize.min.js"></script>
@@ -12,8 +12,8 @@
 <div class="navbar-fixed">
     <nav>
         <div class="nav-wrapper light-blue">
-            <a href="#!" class="brand-logo"><i class="material-icons">store</i> Webstore</a></a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <span href="#!" class="brand-logo center-align"><h4><a href="/admin"><i class="fa fa-home home-fix"></i></a> Webstore</h4></span>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fa fa-list"></i></a>
             <ul class="right hide-on-med-and-down">
                 <% if (isLoggedIn) { %>
                 <li><a href="/cart">Cart</a></li>

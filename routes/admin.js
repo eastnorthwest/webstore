@@ -1,10 +1,6 @@
 const express = require('express');
-const app = express();
 const router = express.Router();
-const authentication = require('../config/authentication.js');
 const authorization = require('../config/authorization.js');
-
-authentication.checkSession(router);
 
 router.get('/', (req, res, next) => {
   var sessionId = req.sessionID;

@@ -1,3 +1,6 @@
-/**
- * Created by steve on 7/12/17.
- */
+/* text constants */
+module.exports = () => {
+
+  const LOGIN_TEST = true;
+
+}
