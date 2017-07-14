@@ -1,4 +1,8 @@
 <%-include ../shared/header%>
+<% if (message.length && message[0].success) { %>
+<div class="green lighten-5 green-text center">
+    <%= message[0].message %>
+</div>
+<% } %>
 <h2>Cart page</h2>
-<p><a href="/admin">Admin</a></p>
 <%-include ../shared/footer%>

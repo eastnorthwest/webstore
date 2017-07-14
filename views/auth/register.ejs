@@ -8,7 +8,7 @@
                     <h3>Register</h3>
                 </div>
             </div>
-            <form action="/auth/register?p=1234" method="POST">
+            <form action="/register" method="POST">
                 <% if (message.length && !message[0].success) { %>
                 <div class="red lighten-5 red-text center">
                     <%= message[0].message %>

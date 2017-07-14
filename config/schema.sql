@@ -6,23 +6,23 @@ DROP TABLE IF EXISTS cart_items;
 DROP TABLE IF EXISTS cart;
 DROP TABLE IF EXISTS images;
 DROP TABLE IF EXISTS products;
-DROP TABLE IF EXISTS shoppers;
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS sessions;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS shipping;
-DROP TABLE IF EXISTS us_states;
+DROP TABLE IF EXISTS states;
 DROP TABLE IF EXISTS countries;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
+  email VARCHAR(128) NOT NULL,
   password VARCHAR(256) NOT NULL,
-  first_name VARCHAR(64) NOT NULL,
-  last_name VARCHAR(64) NOT NULL,
-  address VARCHAR(128) NOT NULL,
+  first_name VARCHAR(64),
+  last_name VARCHAR(64),
+  address VARCHAR(128),
   address2 VARCHAR(128),
-  phone VARCHAR(64) NOT NULL,
-  city VARCHAR(128) NOT NULL,
+  phone VARCHAR(64),
+  city VARCHAR(128),
   state_id INTEGER NOT NULL,
   country_id INTEGER NOT NULL
 );
@@ -103,14 +103,16 @@ CREATE TABLE shipping (
   rate NUMERIC(8, 2) NOT NULL
 );
 
-CREATE TABLE us_states (
+CREATE TABLE states (
   id SERIAL PRIMARY KEY,
-  state VARCHAR(64) NOT NULL
+  shortname VARCHAR(2) NOT NULL,
+  name VARCHAR(64) NOT NULL
 );
 
 CREATE TABLE countries (
   id SERIAL PRIMARY KEY,
-  country VARCHAR(64) NOT NULL
+  shortname VARCHAR(2) NOT NULL,
+  name VARCHAR(64) NOT NULL
 );
 
 CREATE TABLE sessions (

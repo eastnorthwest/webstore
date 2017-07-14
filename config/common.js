@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-const db = require('./db')
+const db = require('./db');
 
 // set defaults/globals
 app.locals.isAdmin =  false;
@@ -33,11 +33,10 @@ app.use(flash());
 const routes = express.Router();
 // check/update session
 routes.use('/', (req, res, next) => {
-
   if (req.sessionID) {
     //console.log(req.session)
     console.log("checkSession", req.sessionID)
-    db.updateSession(req.sessionID).then((result) => {
+    session.updateSession(req.sessionID).then((result) => {
       console.log("authentication- updateSession ok - ", result)
       next();
     }).catch((err) => {

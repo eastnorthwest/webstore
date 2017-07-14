@@ -7,9 +7,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "setupDbRemote": "source .env && psql $DATABASE_URL < ./config/schema.sql $DATABASE_NAME",
-    "setupDbLocal": "source local.env && psql $DATABASE_URL < ./config/schema.sql $DATABASE_NAME",
-    "start": "nodemon app.js",
+    "setupDbRemote": "source .env && sh ./config/psql.sh",
+    "setupDbLocal": "source local.env && sh ./config/psql.sh",
+    "start": "nodemon server.js",
     "scratch": "nodemon scratch.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
